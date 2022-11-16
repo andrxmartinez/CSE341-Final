@@ -12,7 +12,7 @@ app
   .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
   .use([cors(), bodyParser.json()])
   .use((req, res, next) => {
-    console.log("Time: ", Date.now());
+    console.log("Time: ", new Date().toISOString().replace('T', ' ').substring(0, 19));
     next();
   })
   .use("/", require("./routes"));
