@@ -11,7 +11,7 @@ const swaggerFile = require("./swagger.json");
 app
   
 .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-  .use([cors, bodyParser.json()])
+  .use([cors(), bodyParser.json()])
   .use((req, res, next) => {
     console.log("Time: ", Date.now());
     next();
