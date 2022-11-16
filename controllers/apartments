@@ -102,14 +102,10 @@ const createListing = async (req, res) => {
           availability,
           propertyDescription,
           lengthTimeListed,
-      },
-      function (err, result) {
-        if (err) throw err;
-        console.log(`${result.insertedCount} document inserted`);
       }
     );
-    console.log(`${document}`);
-    res.status(201);
+    console.log(`1 document inserted, _id: ${document.insertedId}`);
+    res.status(201).json(document);
   } catch (err) {
     console.error(err);
     res
@@ -157,7 +153,7 @@ const updateListing = async (req, res) => {
       }
     );
     res.status(204);
-    res.json(req.body);
+    res.json(req.body, document);
     console.log(document);
   } catch (err) {
     res
@@ -182,6 +178,7 @@ const deleteListing = async (req, res) => {
     });
     res.status(200);
     res.json(document);
+    console.log(req.body, "Deleted sucessfully!")
   } catch (err) {
     res
       .status(500)
