@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 router.use("/apartments", require("./apartments"));
-// router.use("/commercial", require("./commercial"));
 router.use("/houses", require("./houses"));
 router.use("/commercial", require("./commercial"));
 router.use("/land", require("./land"));
