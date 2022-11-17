@@ -13,15 +13,26 @@
       "description": "CRUD operations accessing the 4 collections"
     }
   ],
-  "schemes": ["http", "https"],
-  "consumes": ["application/json"],
-  "produces": ["application/json"],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/apartments/": {
       "get": {
-        "tags": ["apartments"],
+        "tags": [
+          "apartments"
+        ],
         "description": "Get all apartments",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -36,7 +47,9 @@
         }
       },
       "post": {
-        "tags": ["apartments"],
+        "tags": [
+          "apartments"
+        ],
         "description": "An insert into the apartments collection.",
         "parameters": [
           {
@@ -91,7 +104,9 @@
     },
     "/apartments/{id}": {
       "get": {
-        "tags": ["apartments"],
+        "tags": [
+          "apartments"
+        ],
         "description": "GET and return one apartment",
         "parameters": [
           {
@@ -111,7 +126,9 @@
         }
       },
       "put": {
-        "tags": ["apartments"],
+        "tags": [
+          "apartments"
+        ],
         "description": "An id is required to update, use `6372e6e7a272e19be38fa247`.",
         "parameters": [
           {
@@ -176,7 +193,9 @@
         }
       },
       "delete": {
-        "tags": ["apartments"],
+        "tags": [
+          "apartments"
+        ],
         "description": "Delete requires an id to complete, use one from the GET",
         "parameters": [
           {
@@ -198,186 +217,392 @@
           }
         }
       }
-    }
-  },
-  "/houses/": {
-    "get": {
-      "tags": ["houses"],
-      "description": "Get all houses",
-      "produces": ["application/json"],
-      "parameters": [],
-      "responses": {
-        "200": {
-          "description": "OK"
-        },
-        "400": {
-          "description": "Bad Request"
-        },
-        "500": {
-          "description": "Internal Server Error"
-        }
-      }
     },
-    "post": {
-      "tags": ["houses"],
-      "description": "An insert into the houses collection.",
-      "parameters": [
-        {
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "price": {
-                "example": "any"
-              },
-              "listDate": {
-                "example": "any"
-              },
-              "address": {
-                "example": "any"
-              },
-              "residenceType": {
-                "example": "any"
-              },
-              "yearBuilt": {
-                "example": "any"
-              },
-              "sqFeet": {
-                "example": "any"
-              },
-              "pricePerSqFeet": {
-                "example": "any"
-              },
-              "availability": {
-                "example": "any"
-              },
-              "propertyDescription": {
-                "example": "any"
-              },
-              "lengthTimeListed": {
-                "example": "any"
+    "/houses/": {
+      "get": {
+        "tags": [
+          "houses"
+        ],
+        "description": "Get all houses",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "houses"
+        ],
+        "description": "An insert into the houses collection.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
               }
             }
           }
-        }
-      ],
-      "responses": {
-        "201": {
-          "description": "Created"
-        },
-        "400": {
-          "description": "Bad Request"
-        }
-      }
-    }
-  },
-  "/houses/{id}": {
-    "get": {
-      "tags": ["houses"],
-      "description": "GET and return one house",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "OK"
-        },
-        "500": {
-          "description": "Internal Server Error"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
         }
       }
     },
-    "put": {
-      "tags": ["houses"],
-      "description": "An id is required to update, use `6372e6e7a272e19be38fa247`.",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "body",
-          "in": "body",
-          "schema": {
-            "type": "object",
-            "properties": {
-              "price": {
-                "example": "any"
-              },
-              "listDate": {
-                "example": "any"
-              },
-              "address": {
-                "example": "any"
-              },
-              "residenceType": {
-                "example": "any"
-              },
-              "yearBuilt": {
-                "example": "any"
-              },
-              "sqFeet": {
-                "example": "any"
-              },
-              "pricePerSqFeet": {
-                "example": "any"
-              },
-              "availability": {
-                "example": "any"
-              },
-              "propertyDescription": {
-                "example": "any"
-              },
-              "lengthTimeListed": {
-                "example": "any"
+    "/houses/{id}": {
+      "get": {
+        "tags": [
+          "houses"
+        ],
+        "description": "GET and return one house",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "houses"
+        ],
+        "description": "An id is required to update, use `6372e6e7a272e19be38fa247`.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
               }
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
-      ],
-      "responses": {
-        "200": {
-          "description": "OK"
-        },
-        "204": {
-          "description": "No Content"
-        },
-        "400": {
-          "description": "Bad Request"
-        },
-        "500": {
-          "description": "Internal Server Error"
+      },
+      "delete": {
+        "tags": [
+          "houses"
+        ],
+        "description": "Delete requires an id to complete, use one from the GET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       }
     },
-    "delete": {
-      "tags": ["houses"],
-      "description": "Delete requires an id to complete, use one from the GET",
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "required": true,
-          "type": "string"
+    "/land/": {
+      "get": {
+        "tags": [
+          "land"
+        ],
+        "description": "Get all land listings",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
-      ],
-      "responses": {
-        "200": {
-          "description": "OK"
-        },
-        "400": {
-          "description": "Bad Request"
-        },
-        "500": {
-          "description": "Internal Server Error"
+      },
+      "post": {
+        "tags": [
+          "land"
+        ],
+        "description": "An insert into the land collection.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/land/{id}": {
+      "get": {
+        "tags": [
+          "land"
+        ],
+        "description": "GET and return one land listing",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "land"
+        ],
+        "description": "An id is required to update, use `6372e6e7a272e19be38fa247`.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "price": {
+                  "example": "any"
+                },
+                "listDate": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "residenceType": {
+                  "example": "any"
+                },
+                "yearBuilt": {
+                  "example": "any"
+                },
+                "sqFeet": {
+                  "example": "any"
+                },
+                "pricePerSqFeet": {
+                  "example": "any"
+                },
+                "availability": {
+                  "example": "any"
+                },
+                "propertyDescription": {
+                  "example": "any"
+                },
+                "lengthTimeListed": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "land"
+        ],
+        "description": "Delete requires an id to complete, use one from the GET",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       }
     }

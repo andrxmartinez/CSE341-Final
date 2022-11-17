@@ -7,7 +7,7 @@ const {
   createListing,
   updateListing,
   deleteListing,
-} = require("../controllers/apartments");
+} = require("../controllers/houses");
 
 router.get("/", getAll);
 router.get("/:id", getOne);
