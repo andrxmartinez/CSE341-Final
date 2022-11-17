@@ -127,14 +127,13 @@ const updateListing = async (req, res) => {
                 },
             }
         );
-        res.status(204);
-        res.json(req.body, document);
+        res.status(204).json(document);
         console.log(document);
     } catch (err) {
         res.status(500).json(
             err || "Some error occurred while updating the listing."
         );
-        next(err);
+        // next(err);
     }
 };
 
