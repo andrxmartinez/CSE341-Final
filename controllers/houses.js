@@ -2,8 +2,8 @@ const connectDatabase = require("../database/connect");
 const { ObjectId } = require("mongodb");
 
 const getAll = async (req, res) => {
-  // #swagger.tags = ['apartments']
-  // #swagger.description = 'Get all apartments'
+  // #swagger.tags = ['houses']
+  // #swagger.description = 'Get all houses'
   try {
     const filter = Object.fromEntries(
       Object.entries({}).filter(([_k, v]) => v)
@@ -26,18 +26,18 @@ const getAll = async (req, res) => {
 };
 
 const getOne = async (req, res) => {
-  // #swagger.tags = ['apartments']
-  // #swagger.description = 'GET and return one apartment'
-  const apartmentId = ObjectId(req.params.id);
-  // if (!ObjectId.isValid(apartmentId)) {
+  // #swagger.tags = ['houses']
+  // #swagger.description = 'GET and return one house'
+  const houseId = ObjectId(req.params.id);
+  // if (!ObjectId.isValid(houseId)) {
   //   res
   //     .status(400)
-  //     .json("Use a valid apartment id to find a specific listing.");
+  //     .json("Use a valid house id to find a specific listing.");
   // }
   const collection = await _collection();
   const document = await collection
     .find({
-      _id: apartmentId,
+      _id: houseId,
     })
     .toArray((err, result) => {
       if (err) {
@@ -45,39 +45,12 @@ const getOne = async (req, res) => {
       }
       res.status(200).json(result[0]);
     });
-  console.log(apartmentId, document);
+  console.log(houseId, document);
 };
 
-// const getOne = async (req, res) => {
-//   if (!ObjectId.isValid(req.params.id)) {
-//     res
-//       .status(400)
-//       .json("Use a valid appartmentID to find a specific appartment.");
-//   }
-//   try {
-//     const collection = await _collection();
-//     const document = await collection
-//       .find({
-//         _id: ObjectId(req.params.id),
-//       })
-//       .toArray((err, result) => {
-//         if (err) {
-//           res.status(500).json({ message: err });
-//         }
-//         res.setHeader("Content-Type", "application/json");
-//         res.status(200).json(result[0]);
-//       });
-//     console.log(ObjectId(req.params.id), document);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(400).json({ message: err });
-//   }
-//   // next();
-// };
-
 const createListing = async (req, res) => {
-  // #swagger.tags = ['apartments']
-  // #swagger.description = 'An insert into the apartments collection.'
+  // #swagger.tags = ['houses']
+  // #swagger.description = 'An insert into the houses collection.'
   try {
     const collection = await _collection();
     const { price,
@@ -115,11 +88,11 @@ const createListing = async (req, res) => {
 };
 
 const updateListing = async (req, res) => {
-  // #swagger.tags = ['apartments']
+  // #swagger.tags = ['houses']
   // #swagger.description = 'An id is required to update, use `6372e6e7a272e19be38fa247`.'
-  const apartmentId = ObjectId(req.params.id);
-  if (!ObjectId.isValid(apartmentId)) {
-    res.status(400).json("Use a valid apartment id to find a specific listing");
+  const houseId = ObjectId(req.params.id);
+  if (!ObjectId.isValid(houseId)) {
+    res.status(400).json("Use a valid house id to find a specific listing");
   }
   try {
     const { price,
@@ -135,7 +108,7 @@ const updateListing = async (req, res) => {
     const collection = await _collection();
     const document = await collection.updateOne(
       {
-        _id: apartmentId,
+        _id: houseId,
       },
       {
         $set: {
@@ -163,21 +136,21 @@ const updateListing = async (req, res) => {
 };
 
 const deleteListing = async (req, res) => {
-  // #swagger.tags = ['apartments']
+  // #swagger.tags = ['houses']
   /* #swagger.description = 'Delete requires an id to complete, use one from the GET'
    */
-  const apartmentId = ObjectId(req.params.id);
-  if (!ObjectId.isValid(apartmentId)) {
+  const houseId = ObjectId(req.params.id);
+  if (!ObjectId.isValid(houseId)) {
     res.status(400).json("Use a valid listing id to delete specific listing.");
   }
   try {
     const collection = await _collection();
     const document = await collection.deleteOne({
-      _id: apartmentId,
+      _id: houseId,
     });
     res.status(200);
     res.json(document);
-    console.log(req.body, "Deleted sucessfully!")
+    console.log(req.body, "Deleted successfully!")
   } catch (err) {
     res
       .status(500)
@@ -190,9 +163,9 @@ const deleteListing = async (req, res) => {
 const _collection = async () => {
   try {
     const db = await connectDatabase();
-    return db.collection("apartments");
+    return db.collection("houses");
   } catch (error) {
-    console.error("Error getting apartment collection", error);
+    console.error("Error getting house collection", error);
   }
 };
 
