@@ -14,11 +14,23 @@ const doc = {
   tags: [
     {
       name: "Willow API",
-      description: "CRUD operations accessing the 4 collections", //
+      description: "Use the endpoints to initiate CRUD operations that access the 4 collections. (see example listing below)", 
     },
   ],
-
-  definitions: {}, // by default: empty object (Swagger 2.0)
+  definitions: {
+    listingExample: {
+      $price: "$120000.00" ,
+      $listDate: "2012-10-10" ,
+      address: "766 E 300 SALT LAKE CITY UT 84102-2263 USA" ,
+      residenceType: "single family residence" ,
+      yearBuilt: "2017" ,
+      $sqFeet: 2000 ,
+      pricePerSqFeet: 100.0 ,
+      $availability: true,
+      propertyDescription: "Feels like home the minute you pull up. The living room is warm and inviting, centered by a wood-burning fireplace and built-in shelving. A spacious breakfast area looks out to the backyard and flows into the kitchen, where you’ll find a breakfast bar, double oven and built-in cook top. The master bedroom is large with no lack of storage, including a separate walk-in closet and additional dual closets." ,
+      lengthTimeListed: 2 
+    },
+  },
   components: {}, // by default: empty object (OpenAPI 3.x)
 };
 const outputFile = "./swagger.json";
