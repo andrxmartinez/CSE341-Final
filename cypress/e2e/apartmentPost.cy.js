@@ -6,33 +6,35 @@ describe("test willow API GETs", () => {
   });
 
   it("can click on Try It Out for POST apartment listing", () => {
-    // We'll store our id in a variable so we can reuse it
+    // We'll store our post json in a variable so we can reuse it...maybe
     const postListing = `{
-        "price": "any",
-        "listDate": "any",
-        "address": "any",
-        "residenceType": "any",
-        "yearBuilt": "any",
-        "sqFeet": "any",
-        "pricePerSqFeet": "any",
-        "availability": "any",
-        "propertyDescription": "any",
-        "lengthTimeListed": "any"
-      }`;
+        "$price":"$120,000.00",
+        "$listDate":"2012-11-10",
+        "address":"766 E 300 SALT LAKE CITY UT 84102-2263 USA",
+        "residenceType":"single family residence",
+        "yearBuilt":"2017",
+        "$sqFeet":2000,
+        "pricePerSqFeet":100.0,
+        "$availability":true,
+        "propertyDescription":"The master bedroom is large with no lack of storage, including a separate walk-in closet and additional dual closets. Feels like home the minute you pull up. The living room is warm and inviting, centered by a wood-burning fireplace and built-in shelving. A spacious breakfast area looks out to the backyard and flows into the kitchen, where you’ll find a breakfast bar, double oven and built-in cook top. ",
+        "lengthTimeListed":24
+     }`;
     cy.get("div.scheme-container > section > label > select").select("https");
-    // https://on.cypress.io/selecting-elements
+ 
     cy.get(
-      "#operations-apartments-post_apartments__id_ > div.opblock-summary.opblock-summary-get > button"
+      "#operations-apartments-post_apartments_ > div > button"
     ).click();
     cy.get("button.btn.try-out__btn").click();
-    cy.get("#operations-apartments-post_apartments__id_  textarea").type(
-      `${postListing}`
-    );
+    //  curently just tests example code - trying to enter new information to POST need move back into curly braces and type listing...
+    // cy.get('[data-name = "examplePanel"]').clear();
+    // cy.get('[data-name = "examplePanel"]').type(
+    //     `${postListing}`
+    //   );
     cy.get(
-      "#operations-apartments-post_apartments__id_ > div.no-margin > div > div.execute-wrapper > button"
+      "#operations-apartments-post_apartments_ > div.no-margin > div > div.execute-wrapper > button"
     ).click();
     cy.get(
-      "#operations-apartments-post_apartments__id_ > div.no-margin > div > div.responses-wrapper > div.responses-inner > div > div > table > tbody > tr > td.response-col_status"
+      "#operations-apartments-post_apartments_ > div.no-margin > div > div.responses-wrapper > div.responses-inner > div > div > table > tbody > tr > td.response-col_status"
     ).should("have.text", 201);
     cy.log("Verify json posts a listing with a status of 201."); 
   });
