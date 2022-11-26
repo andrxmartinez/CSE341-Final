@@ -1,4 +1,4 @@
-const cypressConfig = require("../../cypress_delete/cypress.config");
+const cypressConfig = require("../../cypress.config");
 
 describe("test willow API GETs", () => {
   beforeEach(() => {
@@ -23,6 +23,6 @@ describe("test willow API GETs", () => {
     cy.get(
       "#operations-apartments-get_apartments__id_ > div.no-margin > div > div.responses-wrapper > div.responses-inner > div > div > table > tbody > tr > td.response-col_status"
     ).should("have.text", 200);
-    cy.log("Verify json returns single document."); 
+    cy.log("Verify json returns single document with a status of 200."); 
   });
 });

@@ -1,4 +1,4 @@
-const cypressConfig = require("../../cypress_delete/cypress.config");
+const cypressConfig = require("../../cypress.config");
 
 describe("test willow API GETs", () => {
   beforeEach(() => {
