@@ -5,7 +5,7 @@ describe("test willow API GETs", () => {
     cy.visit("https://willowapi.onrender.com/api-docs");
   });
 
-  it("displays apartments endpoint", () => {
+  it("displays apartments endpoints on Swagger api-docs page", () => {
     cy.get("#operations-tag-apartments").should("have.text", "apartments");
 
     cy.get("#operations-apartments-get_apartments_").should(
@@ -28,5 +28,6 @@ describe("test willow API GETs", () => {
       "have.text",
       "DELETE/apartments/{id}"
     );
+    cy.log(" All 5 endpoints visible on page for apartments (GET all, POST, GET one, PUT, DELETE)");
   });
 });
