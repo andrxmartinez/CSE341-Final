@@ -1,6 +1,6 @@
 const cypressConfig = require("../../cypress.config");
 
-describe("test willow API GETs", () => {
+describe("test willow API PUTs", () => {
   beforeEach(() => {
     cy.visit("https://willowapi.onrender.com/api-docs");
   });
