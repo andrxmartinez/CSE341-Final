@@ -11,11 +11,6 @@ describe("test willow API GETs", () => {
       "#operations-apartments-post_apartments_ > div > button"
     ).click();
     cy.get("button.btn.try-out__btn").click();
-    //  curently just tests example code - trying to enter new information to POST need move back into curly braces and type listing...
-    // cy.get('[data-name = "examplePanel"]').clear();
-    // cy.get('[data-name = "examplePanel"]').type(
-    //     `${postListing}`
-    //   );
     cy.get(
       "#operations-apartments-post_apartments_ > div.no-margin > div > div.execute-wrapper > button"
     ).click();
