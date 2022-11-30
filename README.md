@@ -2,7 +2,7 @@
 Repository for Real Estate API
 https://willowapi.onrender.com
 
-## to run Cypress testing
+## to run Cypress testing `npm install cypress`
  npx cypress open, then
  choose e2e - next, 
  click on test to run --
