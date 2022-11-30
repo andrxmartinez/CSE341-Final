@@ -32,11 +32,11 @@ const getOne = async (req, res) => {
     // #swagger.tags = ['apartments']
     // #swagger.description = 'GET and return one apartment'
     const apartmentId = ObjectId(req.params.id);
-    // if (!ObjectId.isValid(apartmentId)) {
-    //   res
-    //     .status(400)
-    //     .json("Use a valid apartment id to find a specific listing.");
-    // }
+    if (!ObjectId.isValid(apartmentId)) {
+      res
+        .status(400)
+        .json("Use a valid apartment id to find a specific listing.");
+    }
     const collection = await _collection();
     const document = await collection
         .find({
@@ -51,36 +51,16 @@ const getOne = async (req, res) => {
     console.log(apartmentId, document);
 };
 
-// const getOne = async (req, res) => {
-//   if (!ObjectId.isValid(req.params.id)) {
-//     res
-//       .status(400)
-//       .json("Use a valid apartmentID to find a specific apartment.");
-//   }
-//   try {
-//     const collection = await _collection();
-//     const document = await collection
-//       .find({
-//         _id: ObjectId(req.params.id),
-//       })
-//       .toArray((err, result) => {
-//         if (err) {
-//           res.status(500).json({ message: err });
-//         }
-//         res.setHeader("Content-Type", "application/json");
-//         res.status(200).json(result[0]);
-//       });
-//     console.log(ObjectId(req.params.id), document);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(400).json({ message: err });
-//   }
-//   // next();
-// };
 
 const createListing = async (req, res) => {
     // #swagger.tags = ['apartments']
-    // #swagger.description = 'An insert into the apartments collection.'
+    // #swagger.description = 'An insert of a new listing into the apartments collection.'
+      /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Create a listing',
+            required: true,
+            schema: { $ref: "#/definitions/listingExample" }
+    } */
     try {
         const collection = await _collection();
         const {
@@ -120,6 +100,12 @@ const createListing = async (req, res) => {
 const updateListing = async (req, res) => {
     // #swagger.tags = ['apartments']
     // #swagger.description = 'An id is required to update, use `6372e6e7a272e19be38fa247`.'
+      /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Update a listing',
+            required: true,
+            schema: { $ref: "#/definitions/listingExample" }
+    } */
     const apartmentId = ObjectId(req.params.id);
     if (!ObjectId.isValid(apartmentId)) {
         res.status(400).json(
