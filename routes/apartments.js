@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const validation = require('../middleware/validate');
 
 const {
   getAll,
@@ -11,8 +12,8 @@ const {
 
 router.get("/", getAll);
 router.get("/:id", getOne);
-router.post("/", createListing);
-router.put("/:id", updateListing);
+router.post("/", validation.validateListing, createListing);
+router.put("/:id", validation.validateListing, updateListing);
 router.delete("/:id", deleteListing);
 
 module.exports = router;
