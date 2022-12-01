@@ -21,7 +21,7 @@ describe("test willow API PUTs", () => {
     const houseId = `63756c24cdb1243ec71dd0db`;
     cy.get("div.scheme-container > section > label > select").select("https");
 
-    cy.get("#operations-houses-put_housess__id_ > div > button").click();
+    cy.get("#operations-houses-put_houses__id_ > div > button").click();
     cy.get("button.btn.try-out__btn").click();
     cy.get("#operations-houses-put_houses__id_  input[type=text]").type(
       `${houseId}`
