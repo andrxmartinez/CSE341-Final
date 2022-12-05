@@ -1,0 +1,43 @@
+body {
+    background-color: lightcyan;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.button {
+    display: inline-block;
+    padding: 7px 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px #999;
+    margin: auto;
+  }
+  .buttons {
+    margin: auto;
+    width: 75%;
+  }
+  .button:hover {background-color: #3e8e41}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  div#outputDiv {
+    border: 1px dotted rgb(24, 19, 90);
+    padding: 3em;
+    margin: auto; 
+    width: 75%;
+    text-align: center;
+  }
+  a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #3e8e41;
+  }
+  
