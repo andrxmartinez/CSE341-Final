@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const connectDatabase = require("./database/connect");
 const port = process.env.PORT || 8080;
 const app = express();
+const path = require('path');
 const passport = require('passport');
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger.json");
@@ -14,9 +15,10 @@ function isLoggedIn(req, res, next) {
   req.user ? next() : res.sendStatus(401);
 }
 
-app.use(session({ secret: process.env.SECRET }));
+app.use(session({ secret: process.env.SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.get('/', (req, res) => {
   res.send(
@@ -30,11 +32,12 @@ app.get(
 );
 
 app.get(
-  '/google/callback',
+  '/google/callback', (req, res) => {
   passport.authenticate('google', {
-    successRedirect: '/api-docs',
+    successRedirect: res.sendFile(path.join(__dirname, '/index.html')),
     failureRedirect: '/auth/failure',
   })
+}
 );
 
 app.get('/auth/failure', (req, res) => {
