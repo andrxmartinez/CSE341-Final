@@ -1,37 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    
     <title>Willow Listings</title>
-</head>
+    <style>
+      body {
+        background-color: lightcyan;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-<body>
+      .button {
+        display: inline-block;
+        padding: 7px 15px;
+        font-size: 1.2em;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4caf50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px #999;
+        margin: auto;
+      }
+
+      .buttons {
+        margin: auto;
+        width: 75%;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+
+      div#outputDiv {
+        border: 1px dotted rgb(24, 19, 90);
+        padding: 3em;
+        margin: auto;
+        width: 75%;
+        text-align: left;
+      }
+
+      a {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #3e8e41;
+      }
+
+      button.logout {
+        position: absolute;
+        right: 100px;
+        top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
     <header>
-        <nav>
-            <h1>Willow - your Real Estate Listings</h1>
+      <nav>
+        <h1>Willow - Real Estate Listings</h1>
 
-            <a href="https://willowapi.onrender.com/api-docs"> Swagger: API document link</a>
-            <button class="button logout" onclick="document.location='https://willowapi.onrender.com/logout'">Logout</button>
-        </nav>
-        <hr>
+        <a href="/api-docs"> Swagger: API document link</a>
+        <button
+          class="button logout"
+          onclick="document.location='http://localhost:8080/logout'"
+        >
+          Logout
+        </button>
+      </nav>
+      <hr />
     </header>
-    <div class='buttons'>
-
-        <button class="button" id='apartments'>Apartments</button>
-        <button class="button" id='houses'>Houses</button>
-        <button class="button" id='commercial'>Commercial</button>
-        <button class="button" id='land'>Land</button>
+    <div class="buttons">
+      <button class="button" id="apartments">Apartments</button>
+      <button class="button" id="houses">Houses</button>
+      <button class="button" id="commercial">Commercial</button>
+      <button class="button" id="land">Land</button>
     </div>
-    <br>
-    <div id='outputDiv'>
-        Please wait, response will appear here.
-    </div>
-    <script src="index.js"></script>
-</body>
+    <br />
+    <div id="outputDiv">Choose which listing type you would like to see by clicking the respective button above. Please wait, response will appear here.</div>
+    <script>
+      const apartmentsButton = document.getElementById('apartments');
+      const housesButton = document.getElementById('houses');
+      const commercialButton = document.getElementById('commercial');
+      const landButton = document.getElementById('land');
+      // the url endpoints for each
+      const apartmentsAPI = 'http://localhost:8080/apartments/';
+      const housesAPI = 'http://localhost:8080/houses/';
+      const commercialAPI = 'http://localhost:8080/commercial/';
+      const landAPI = 'http://localhost:8080/land/';
 
+      apartmentsButton.addEventListener(
+        'click',
+        () => {
+          fetch(apartmentsAPI)
+            .then((response) => {
+              outputDiv.innerHTML = 'Waiting for response...';
+              if (response.ok) {
+                outputDiv.innerHTML = '';
+                return response;
+              }
+              throw Error(response.statusText);
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              for (let i = 0; i < 10; i++) {
+                outputDiv.innerHTML += `<h2>Listing Number ${i + 1}</h2>
+          <p><b>Property Description:</b> ${data[i].propertyDescription}</p>
+          <p><b>Property Address:</b> ${data[i].address}</p>
+          <p><b>Property Avalibility: </b>${data[i].availability}</p>
+          <p><b>Property List Date:</b> ${data[i].listDate}</p>
+          <p><b>Property Price:</b> ${data[i].price}</p>
+          <p><b>Property Square Feet:</b> ${data[i].sqFeet}</p>
+          <p><b>Property Year Built:</b> ${data[i].yearBuilt}</p>
+          <hr>
+      `;
+              }
+            })
+            .catch((error) => console.log('There was an error:', error));
+        },
+        false
+      );
+
+      housesButton.addEventListener(
+        'click',
+        () => {
+          fetch(housesAPI)
+            .then((response) => {
+              outputDiv.innerHTML = 'Waiting for response...';
+              if (response.ok) {
+                outputDiv.innerHTML = '';
+                return response;
+              }
+              throw Error(response.statusText);
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              for (let i = 0; i < 10; i++) {
+                outputDiv.innerHTML += `<h2>Listing Number ${i + 1}</h2>
+            <p><b>Property Description:</b> ${data[i].propertyDescription}</p>
+            <p><b>Property Address:</b> ${data[i].address}</p>
+            <p><b>Property Avalibility: </b>${data[i].availability}</p>
+            <p><b>Property List Date:</b> ${data[i].listDate}</p>
+            <p><b>Property Price:</b> ${data[i].price}</p>
+            <p><b>Property Square Feet:</b> ${data[i].sqFeet}</p>
+            <p><b>Property Year Built:</b> ${data[i].yearBuilt}</p>
+            <hr>
+        `;
+              }
+            })
+            .catch((error) => console.log('There was an error:', error));
+        },
+        false
+      );
+      commercialButton.addEventListener(
+        'click',
+        () => {
+          fetch(commercialAPI)
+            .then((response) => {
+              outputDiv.innerHTML = 'Waiting for response...';
+              if (response.ok) {
+                outputDiv.innerHTML = '';
+                return response;
+              }
+              throw Error(response.statusText);
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              for (let i = 0; i < 10; i++) {
+                outputDiv.innerHTML += `<h2>Listing Number ${i + 1}</h2>
+            <p><b>Property Description:</b> ${data[i].propertyDescription}</p>
+            <p><b>Property Address:</b> ${data[i].address}</p>
+            <p><b>Property Avalibility: </b>${data[i].availability}</p>
+            <p><b>Property List Date:</b> ${data[i].listDate}</p>
+            <p><b>Property Price:</b> ${data[i].price}</p>
+            <p><b>Property Square Feet:</b> ${data[i].sqFeet}</p>
+            <p><b>Property Year Built:</b> ${data[i].yearBuilt}</p>
+            <hr>
+        `;
+              }
+            })
+            .catch((error) => console.log('There was an error:', error));
+        },
+        false
+      );
+      landButton.addEventListener(
+        'click',
+        () => {
+          fetch(landAPI)
+            .then((response) => {
+              outputDiv.innerHTML = 'Waiting for response...';
+              if (response.ok) {
+                outputDiv.innerHTML = '';
+                return response;
+              }
+              throw Error(response.statusText);
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+              for (let i = 0; i < 10; i++) {
+                outputDiv.innerHTML += `<h2>Listing Number ${i + 1}</h2>
+            <p><b>Property Description:</b> ${data[i].propertyDescription}</p>
+            <p><b>Property Address:</b> ${data[i].address}</p>
+            <p><b>Property Avalibility: </b>${data[i].availability}</p>
+            <p><b>Property List Date:</b> ${data[i].listDate}</p>
+            <p><b>Property Price:</b> ${data[i].price}</p>
+            <p><b>Property Square Feet:</b> ${data[i].sqFeet}</p>
+            <p><b>Property Year Built:</b> ${data[i].yearBuilt}</p>
+            <hr>
+        `;
+              }
+            })
+            .catch((error) => console.log('There was an error:', error));
+        },
+        false
+      );
+    </script>
+  </body>
 </html>
