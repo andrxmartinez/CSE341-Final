@@ -59,7 +59,6 @@ app.get('/logout', (req, res, next) => {
 });
 
 app
-  // .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
   .use([cors(), bodyParser.json()])
   .use((req, res, next) => {
     console.log(
@@ -68,7 +67,9 @@ app
     );
     next();
   })
-  .use('/', isLoggedIn, require('./routes'));
+  // Leave this uncommented for unit testing
+  .use('/', require('./routes'));
+  // .use('/', isLoggedIn, require('./routes'));
 
 process.on('uncaughtException', (err, origin) => {
   console.log(

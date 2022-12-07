@@ -3,6 +3,7 @@ const cypressConfig = require("../../cypress.config");
 describe("test willow API GETs", () => {
   beforeEach(() => {
     cy.visit("https://willowapi.onrender.com/api-docs");
+    // cy.visit('http://localhost:8080/api-docs');
   });
 
   it("can click on Try It Out for get all apartment listings", () => {
