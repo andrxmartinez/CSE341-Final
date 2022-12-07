@@ -7,7 +7,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL:
-        'https://willowapi.onrender.com/google/callback',
+        'https://willowapi.onrender.com/home/google/callback',
         // 'http://localhost:8080/google/callback',
       passReqToCallback: true,
     },
