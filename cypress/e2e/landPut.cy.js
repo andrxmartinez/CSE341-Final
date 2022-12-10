@@ -18,7 +18,7 @@ describe("test willow API PUTs", () => {
         "propertyDescription":"This is a very convenient piece of land for an affordable price. ",
         "lengthTimeListed":24
      `;
-    const landId = `6382576e1766c970a62587w1`;
+    const landId = `6391f75470af763686fca57f`;
     cy.get("div.scheme-container > section > label > select").select("https");
 
     cy.get("#operations-land-put_land__id_ > div > button").click();

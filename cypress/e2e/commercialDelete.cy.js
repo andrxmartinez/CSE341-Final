@@ -6,10 +6,9 @@ describe("test willow API DELETEs", () => {
     });
     it("can toggle HTTPS and click on Try It Out for DELETE commercial listing", () => {
         // NEED VALID ID TO DELETE
-        const commercialId = `638a6b0e8f11fc8a34a26520`;
+        const commercialId = `6393ff8a08d00a80bc6eea02`;
         cy.get("div.scheme-container > section > label > select").select(
-            "https"
-        );
+            "https");
         cy.get(
             "#operations-commercial-delete_commercial__id_ > div > button"
         ).click();
