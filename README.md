@@ -7,3 +7,4 @@ https://willowapi.onrender.com
  choose e2e - next, 
  click on test to run --
  note some require ID's that may need to be replaced or updated - (especially DELETEs)
+ `npm cypress run` runs all the tests headless 
