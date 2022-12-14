@@ -68,8 +68,8 @@ app
     next();
   })
   // Leave this uncommented for unit testing
-  .use('/', require('./routes'));
-  // .use('/', isLoggedIn, require('./routes'));
+  // .use('/', require('./routes'));
+  .use('/', isLoggedIn, require('./routes'));
 
 process.on('uncaughtException', (err, origin) => {
   console.log(
