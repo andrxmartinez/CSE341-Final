@@ -6,7 +6,7 @@ describe("test willow API DELETEs", () => {
   });
   it("can toggle HTTPS and click on Try It Out for DELETE house listing", () => {
 // NEED VALID ID TO DELETE
-    const houseId = `6393ffbc08d00a80bc6eea03`;
+    const houseId = `639916df71a6d809995d1e50`;
     cy.get("div.scheme-container > section > label > select").select("https");
     cy.get("#operations-houses-delete_houses__id_ > div > button").click();
     cy.get("button.btn.try-out__btn").click();
