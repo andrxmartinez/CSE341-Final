@@ -133,7 +133,7 @@ const updateListing = async (req, res) => {
         res.status(500).json(
             err || "Some error occurred while updating the listing."
         );
-        // next(err);
+        next(err);
     }
 };
 

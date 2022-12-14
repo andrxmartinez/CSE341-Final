@@ -95,7 +95,7 @@ const createListing = async (req, res) => {
 
 const updateListing = async (req, res) => {
   // #swagger.tags = ['apartments']
-  // #swagger.description = 'An id is required to update, use `6372e6e7a272e19be38fa247`.'
+  // #swagger.description = 'An id is required to update, use `6391f6fb70af763686fca57e`.'
   /*	#swagger.parameters['obj'] = {
             in: 'body',
             description: 'Update a listing',

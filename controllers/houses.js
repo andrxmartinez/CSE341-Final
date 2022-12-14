@@ -32,11 +32,11 @@ const getOne = async (req, res) => {
     // #swagger.tags = ['houses']
     // #swagger.description = 'GET and return one house'
     const houseId = ObjectId(req.params.id);
-    // if (!ObjectId.isValid(houseId)) {
-    //   res
-    //     .status(400)
-    //     .json("Use a valid house id to find a specific listing.");
-    // }
+    if (!ObjectId.isValid(houseId)) {
+      res
+        .status(400)
+        .json("Use a valid house id to find a specific listing.");
+    }
     const collection = await _collection();
     const document = await collection
         .find({
@@ -54,6 +54,13 @@ const getOne = async (req, res) => {
 const createListing = async (req, res) => {
     // #swagger.tags = ['houses']
     // #swagger.description = 'An insert into the houses collection.'
+      /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Update a listing',
+            required: true,
+            schema: { $ref: "#/definitions/listingExample" }
+    } 
+    */
     try {
         const collection = await _collection();
         const {
@@ -92,7 +99,14 @@ const createListing = async (req, res) => {
 
 const updateListing = async (req, res) => {
     // #swagger.tags = ['houses']
-    // #swagger.description = 'An id is required to update, use `6372e6e7a272e19be38fa247`.'
+    // #swagger.description = 'An id is required to update, use `6393ffbc08d00a80bc6eea03`.'
+      /*	#swagger.parameters['obj'] = {
+            in: 'body',
+            description: 'Update a listing',
+            required: true,
+            schema: { $ref: "#/definitions/listingExample" }
+    } 
+    */
     const houseId = ObjectId(req.params.id);
     if (!ObjectId.isValid(houseId)) {
         res.status(400).json("Use a valid house id to find a specific listing");
